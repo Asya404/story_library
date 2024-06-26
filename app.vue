@@ -1,19 +1,16 @@
 <template>
   <div class="container">
     <div>
-      <select size="2" v-model="selectedOption">
-        <option value="1">button 1</option>
-        <option value="2">button 2</option>
+      <select size="3" v-model="selectedOption">
+        <option value="1">Button</option>
+        <option value="2">Neutral Button</option>
+        <option value="3">Brand Button</option>
       </select>
     </div>
 
-    <div v-if="selectedOption === '1'" class="template">
-      <button class="slds-button">Button</button>
-    </div>
-
-    <div v-if="selectedOption === '2'" class="template">
-      <button class="slds-button slds-button_neutral">Button</button>
-    </div>
+    <story-button v-if="selectedOption === '1'" base></story-button>
+    <story-button v-if="selectedOption === '2'" neutral></story-button>
+    <story-button v-if="selectedOption === '3'" brand></story-button>
   </div>
 </template>
 
@@ -24,6 +21,7 @@ const selectedOption = ref("1");
 <style>
 .container {
   display: flex;
+  align-items: flex-start;
   gap: 20px;
   padding: 20px;
 }
