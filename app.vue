@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <select size="3" v-model="selectedOption">
+      <select size="3" v-model="selectedOption" @change="setToLS">
         <option value="1">Button</option>
         <option value="2">Neutral Button</option>
         <option value="3">Brand Button</option>
@@ -15,7 +15,15 @@
 </template>
 
 <script setup>
-const selectedOption = ref("1");
+const selectedOption = ref("");
+
+const setToLS = () => {
+  localStorage.setItem("selectedOption", selectedOption.value);
+};
+
+onMounted(() => {
+  selectedOption.value = localStorage.getItem("selectedOption") || "1";
+});
 </script>
 
 <style>
