@@ -39,17 +39,14 @@ const selectedOption = ref("");
 
 const accordionItems = ref([
   {
-    isOpen: false,
     label: "Accordion summary a",
     content: "Accordion details - A",
   },
   {
-    isOpen: false,
     label: "Accordion summary b",
     content: "Accordion details - B",
   },
   {
-    isOpen: false,
     label: "Accordion summary c",
     content: "Accordion details - C",
   },

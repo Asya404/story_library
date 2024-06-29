@@ -24,9 +24,11 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   items: Array,
 });
+
+props.items = ref(props.items.map((item) => ({ ...item, isOpen: false })));
 
 const toggleAccordion = (toggledItem) => {
   toggledItem.isOpen = !toggledItem.isOpen;
