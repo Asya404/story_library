@@ -1,13 +1,17 @@
 <template>
   <div class="container">
     <div>
-      <select size="10" v-model="selectedOption" @change="setToLS">
+      <select size="20" v-model="selectedOption" @change="setToLS">
         <option value="1">Button</option>
         <option value="2">Neutral Button</option>
         <option value="3">Brand Button</option>
         <option value="4">Card</option>
         <option value="5">Collapsed Card</option>
         <option value="6">Loading Card</option>
+        <option value="8">Toast</option>
+        <option value="9">Success Toast</option>
+        <option value="10">Warning Toast</option>
+        <option value="11">Error Toast</option>
       </select>
     </div>
     <div class="wrapper">
@@ -27,6 +31,11 @@
       <story-card v-if="selectedOption === '6'" loading imgLink="https://img.icons8.com/?size=100&id=86128&format=png&color=7950F2">
         <template v-slot:header>Accounts</template>
       </story-card>
+
+      <story-toast v-if="selectedOption === '8'">26 potential duplicate leads were found.</story-toast>
+      <story-toast v-if="selectedOption === '9'" success>Account ACME - 100 widgets was created.</story-toast>
+      <story-toast v-if="selectedOption === '10'" warning>Can’t share file “report-q3.pdf” with the selected users.</story-toast>
+      <story-toast v-if="selectedOption === '11'" error>Can’t save lead “Sally Wong” because another lead has the same name.</story-toast>
     </div>
   </div>
 </template>
@@ -50,9 +59,8 @@ onMounted(() => {
   gap: 50px;
 }
 
-.wrapper {
-  width: 100%;
-  max-width: 400px;
+.slds-card {
+  min-width: 400px;
 }
 
 select {
