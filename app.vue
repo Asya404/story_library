@@ -8,6 +8,7 @@
         <option value="4">Card</option>
         <option value="5">Collapsed Card</option>
         <option value="6">Loading Card</option>
+        <option value="12">Carousel</option>
       </select>
     </div>
     <div class="wrapper">
@@ -27,12 +28,32 @@
       <story-card v-if="selectedOption === '6'" loading imgLink="https://img.icons8.com/?size=100&id=86128&format=png&color=7950F2">
         <template v-slot:header>Accounts</template>
       </story-card>
+
+      <story-carousel v-if="selectedOption === '12'" :items="carouselItems"></story-carousel>
     </div>
   </div>
 </template>
 
 <script setup>
 const selectedOption = ref("");
+
+const carouselItems = ref([
+  {
+    label: "Item 1",
+    description: "Item 1 description",
+    imgLink: "https://images.pexels.com/photos/6289026/pexels-photo-6289026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    label: "Item 2",
+    description: "Item 2 description",
+    imgLink: "https://images.pexels.com/photos/6289026/pexels-photo-6289026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    label: "Item 3",
+    description: "Item 3 description",
+    imgLink: "https://images.pexels.com/photos/6289026/pexels-photo-6289026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+]);
 
 const setToLS = () => {
   localStorage.setItem("selectedOption", selectedOption.value);
