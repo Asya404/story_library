@@ -8,6 +8,7 @@
         <option value="4">Card</option>
         <option value="5">Collapsed Card</option>
         <option value="6">Loading Card</option>
+        <option value="7">Accordion</option>
       </select>
     </div>
     <div class="wrapper">
@@ -27,12 +28,29 @@
       <story-card v-if="selectedOption === '6'" loading imgLink="https://img.icons8.com/?size=100&id=86128&format=png&color=7950F2">
         <template v-slot:header>Accounts</template>
       </story-card>
+
+      <story-accordion v-if="selectedOption === '7'" :items="accordionItems"></story-accordion>
     </div>
   </div>
 </template>
 
 <script setup>
 const selectedOption = ref("");
+
+const accordionItems = ref([
+  {
+    label: "Accordion summary a",
+    content: "Accordion details - A",
+  },
+  {
+    label: "Accordion summary b",
+    content: "Accordion details - B",
+  },
+  {
+    label: "Accordion summary c",
+    content: "Accordion details - C",
+  },
+]);
 
 const setToLS = () => {
   localStorage.setItem("selectedOption", selectedOption.value);
