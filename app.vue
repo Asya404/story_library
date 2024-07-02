@@ -13,6 +13,7 @@
         <option value="9">Success Toast</option>
         <option value="10">Warning Toast</option>
         <option value="11">Error Toast</option>
+        <option value="12">Carousel</option>
       </select>
     </div>
     <div class="wrapper">
@@ -39,6 +40,8 @@
       <story-toast v-if="selectedOption === '9'" success>Account ACME - 100 widgets was created.</story-toast>
       <story-toast v-if="selectedOption === '10'" warning>Can’t share file “report-q3.pdf” with the selected users.</story-toast>
       <story-toast v-if="selectedOption === '11'" error>Can’t save lead “Sally Wong” because another lead has the same name.</story-toast>
+
+      <story-carousel v-if="selectedOption === '12'" :items="carouselItems"></story-carousel>
     </div>
   </div>
 </template>
@@ -58,6 +61,24 @@ const accordionItems = ref([
   {
     label: "Accordion summary c",
     content: "Accordion details - C",
+  },
+]);
+
+const carouselItems = ref([
+  {
+    label: "Item 1",
+    description: "Item 1 description",
+    imgLink: "https://images.pexels.com/photos/6289026/pexels-photo-6289026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    label: "Item 2",
+    description: "Item 2 description",
+    imgLink: "https://images.pexels.com/photos/6289026/pexels-photo-6289026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    label: "Item 3",
+    description: "Item 3 description",
+    imgLink: "https://images.pexels.com/photos/6289026/pexels-photo-6289026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
 ]);
 
