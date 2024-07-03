@@ -14,6 +14,7 @@
         <option value="10">Warning Toast</option>
         <option value="11">Error Toast</option>
         <option value="12">Carousel</option>
+        <option value="14">Data Table</option>
       </select>
     </div>
     <div class="wrapper">
@@ -42,6 +43,8 @@
       <story-toast v-if="selectedOption === '11'" error>Can’t save lead “Sally Wong” because another lead has the same name.</story-toast>
 
       <story-carousel v-if="selectedOption === '12'" :items="carouselItems"></story-carousel>
+
+      <story-data-table v-if="selectedOption === '14'" :items="tableItems" :headings="tableHeadings"></story-data-table>
     </div>
   </div>
 </template>
@@ -79,6 +82,29 @@ const carouselItems = ref([
     label: "Item 3",
     description: "Item 3 description",
     imgLink: "https://images.pexels.com/photos/6289026/pexels-photo-6289026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+]);
+
+const tableHeadings = ref(["Opportunity Name", "Account Name", "Close Date", "Stage", "Confidence", "Amount", "Contact"]);
+
+const tableItems = ref([
+  {
+    opportunityName: "Cloudhub",
+    accountName: "Cloudhub",
+    closeDate: "4/14/2015",
+    stage: "Prospecting",
+    confidence: "20%",
+    amount: "$25k",
+    contact: "jrogers@cloudhub.com",
+  },
+  {
+    opportunityName: "Anypoint Connectors",
+    accountName: "Cloudhub",
+    closeDate: "4/18/2015",
+    stage: "Prospecting",
+    confidence: "40%",
+    amount: "$30k",
+    contact: "jrogers@cloudhub.com",
   },
 ]);
 
