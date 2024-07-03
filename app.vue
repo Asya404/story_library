@@ -14,6 +14,7 @@
         <option value="10">Warning Toast</option>
         <option value="11">Error Toast</option>
         <option value="12">Carousel</option>
+        <option value="15">App Launcher</option>
       </select>
     </div>
     <div class="wrapper">
@@ -42,6 +43,8 @@
       <story-toast v-if="selectedOption === '11'" error>Can’t save lead “Sally Wong” because another lead has the same name.</story-toast>
 
       <story-carousel v-if="selectedOption === '12'" :items="carouselItems"></story-carousel>
+
+      <story-app-launcher v-if="selectedOption === '15'" :items="appLauncherItems">App launcher</story-app-launcher>
     </div>
   </div>
 </template>
@@ -79,6 +82,45 @@ const carouselItems = ref([
     label: "Item 3",
     description: "Item 3 description",
     imgLink: "https://images.pexels.com/photos/6289026/pexels-photo-6289026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+]);
+
+const appLauncherItems = ref([
+  {
+    label: "Sales Cloud",
+    description: "The primary internal Salesforce org",
+    link: "https://www.google.com",
+    color: "#e3d067",
+  },
+  {
+    label: "Marketing Cloud",
+    description: "Salesforce Marketing Cloud lets businesses of any size",
+    link: "https://www.google.com",
+    color: "#6488e3",
+  },
+  {
+    label: "HR Concierge",
+    description: "Community for managing employee benefits",
+    link: "https://www.google.com",
+    color: "#e36868",
+  },
+  {
+    label: "My Money",
+    description: "Manage your finances across multiple financial platforms",
+    link: "https://www.google.com",
+    color: "#54c473",
+  },
+  {
+    label: "Call Center",
+    description: "The key to call center and contact center management",
+    link: "https://www.google.com",
+    color: "#bf7b66",
+  },
+  {
+    label: "Customer Support",
+    description: "Areas of Focus are used to track customer support",
+    link: "https://www.google.com",
+    color: "#49bcd3",
   },
 ]);
 
