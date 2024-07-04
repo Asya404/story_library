@@ -14,6 +14,7 @@
         <option value="10">Warning Toast</option>
         <option value="11">Error Toast</option>
         <option value="12">Carousel</option>
+        <option value="17">List Builder</option>
       </select>
     </div>
     <div class="wrapper">
@@ -42,6 +43,10 @@
       <story-toast v-if="selectedOption === '11'" error>Can’t save lead “Sally Wong” because another lead has the same name.</story-toast>
 
       <story-carousel v-if="selectedOption === '12'" :items="carouselItems"></story-carousel>
+
+      <story-list-builder v-if="selectedOption === '17'" :items="listBuilderItems" :headings="listBuilderHeadings"
+        >Pricebook: Salesforce Products</story-list-builder
+      >
     </div>
   </div>
 </template>
@@ -79,6 +84,29 @@ const carouselItems = ref([
     label: "Item 3",
     description: "Item 3 description",
     imgLink: "https://images.pexels.com/photos/6289026/pexels-photo-6289026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+]);
+
+const listBuilderHeadings = ref(["Name", "Product Code", "List Price", "Product Family"]);
+
+const listBuilderItems = ref([
+  {
+    label: "Analytics",
+    productCode: "ANTLY",
+    listPrice: "5000.00",
+    productFamily: "Analytics Product",
+  },
+  {
+    label: "Analytics",
+    productCode: "ANTLY",
+    listPrice: "5000.00",
+    productFamily: "Analytics Product",
+  },
+  {
+    label: "Analytics",
+    productCode: "ANTLY",
+    listPrice: "5000.00",
+    productFamily: "Analytics Product",
   },
 ]);
 
