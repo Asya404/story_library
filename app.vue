@@ -95,7 +95,7 @@ const appLauncherItems = ref([
   {
     label: "Marketing Cloud",
     description: "Salesforce Marketing Cloud lets businesses of any size",
-    link: "https://www.google.com",
+    onClick: () => (location.href = "/"),
     color: "#6488e3",
   },
   {

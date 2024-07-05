@@ -19,7 +19,9 @@
                     </span>
                   </div>
                   <div class="slds-app-launcher__tile-body">
-                    <a :href="item.link">{{ item.label }}</a>
+                    <a v-if="item.link" :href="item.link">{{ item.label }}</a>
+                    <div v-else-if="item.onClick" @click="item.onClick">{{ item.label }}</div>
+                    <div v-else>Error</div>
                     <p>{{ item.description }}</p>
                     <div
                       class="slds-popover slds-popover_tooltip slds-nubbin_top-right slds-hide"
