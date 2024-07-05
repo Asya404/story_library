@@ -32,16 +32,16 @@
           </a>
         </li>
         <li
-          v-for="item in items"
+          v-for="(item, index) in props.items"
           :key="item.label"
-          @click="toggleDropdown(item)"
+          @click="toggleDropdown(index)"
           class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click"
-          :class="{ 'slds-is-open': item.isOpen, 'slds-is-active': item.isOpen }"
+          :class="{ 'slds-is-open': opened[index], 'slds-is-active': opened[index] }"
         >
           <a href="#" class="slds-context-bar__label-action" title="Menu Item">
             <span class="slds-truncate" title="Menu Item">{{ item.label }}</span>
           </a>
-          <div class="slds-context-bar__icon-action" :class="{ 'icon-up': item.isOpen, 'icon-down': !item.isOpen }">
+          <div class="slds-context-bar__icon-action" :class="{ 'icon-up': opened[index], 'icon-down': !opened[index] }">
             <button
               class="slds-button slds-button_icon slds-button_icon slds-context-bar__button"
               aria-haspopup="true"
@@ -64,30 +64,33 @@
     </nav>
   </div>
 </template>
+
 <script setup>
 const props = defineProps({
   items: Array,
 });
+
 let homeActive = ref(true);
-props.items = ref(props.items.map((item) => ({ ...item, isOpen: false })));
-const toggleDropdown = (toggledItem) => {
-  toggledItem.isOpen = !toggledItem.isOpen;
-  props.items.forEach((item) => {
-    if (item !== toggledItem) {
-      item.isOpen = false;
-    }
-  });
-  toggledItem.isOpen && (homeActive = false);
+
+const opened = ref(props.items.map(() => false));
+
+const toggleDropdown = (index) => {
+  opened.value = opened.value.map((state, i) => (i === index ? !state : false));
+  homeActive.value = false;
 };
+
 const setHomeActive = () => {
-  homeActive = true;
+  homeActive.value = !opened.value.some((state) => state);
+  homeActive.value = true;
 };
 </script>
+
 <style>
 .icon-up {
   display: inline-block;
   transform: rotate(180deg);
 }
+
 .slds-button:focus {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
