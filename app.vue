@@ -44,7 +44,11 @@
 
       <story-carousel v-if="selectedOption === '12'" :items="carouselItems"></story-carousel>
 
-      <story-timeline v-if="selectedOption === '16'" :items="timelineItems"></story-timeline>
+      <story-timeline
+        v-if="selectedOption === '16'"
+        :items="timelineItems"
+        :style="{ backgroundColor: '#fff', padding: '20px', borderRadius: '5px' }"
+      ></story-timeline>
     </div>
   </div>
 </template>
