@@ -15,6 +15,7 @@
         <option value="11">Error Toast</option>
         <option value="12">Carousel</option>
         <option value="13">Navigation</option>
+        <option value="14">Data Table</option>
       </select>
     </div>
     <div class="wrapper">
@@ -45,6 +46,8 @@
       <story-carousel v-if="selectedOption === '12'" :items="carouselItems"></story-carousel>
 
       <story-navigation v-if="selectedOption === '13'" :items="navigationItems">App Name</story-navigation>
+
+      <story-data-table v-if="selectedOption === '14'" :items="tableItems" :headings="tableHeadings"></story-data-table>
     </div>
   </div>
 </template>
@@ -136,6 +139,29 @@ const navigationItems = ref([
         link: "#",
       },
     ],
+  },
+]);
+
+const tableHeadings = ref(["Opportunity Name", "Account Name", "Close Date", "Stage", "Confidence", "Amount", "Contact"]);
+
+const tableItems = ref([
+  {
+    opportunityName: "Cloudhub",
+    accountName: "Cloudhub",
+    closeDate: "4/14/2015",
+    stage: "Prospecting",
+    confidence: "20%",
+    amount: "$25k",
+    contact: "jrogers@cloudhub.com",
+  },
+  {
+    opportunityName: "Anypoint Connectors",
+    accountName: "Cloudhub",
+    closeDate: "4/18/2015",
+    stage: "Prospecting",
+    confidence: "40%",
+    amount: "$30k",
+    contact: "jrogers@cloudhub.com",
   },
 ]);
 
