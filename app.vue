@@ -14,6 +14,7 @@
         <option value="10">Warning Toast</option>
         <option value="11">Error Toast</option>
         <option value="12">Carousel</option>
+        <option value="18">Combobox</option>
       </select>
     </div>
     <div class="wrapper">
@@ -42,6 +43,8 @@
       <story-toast v-if="selectedOption === '11'" error>Can’t save lead “Sally Wong” because another lead has the same name.</story-toast>
 
       <story-carousel v-if="selectedOption === '12'" :items="carouselItems"></story-carousel>
+
+      <story-combobox v-if="selectedOption === '18'" :options="comboboxOptions"></story-combobox>
     </div>
   </div>
 </template>
@@ -79,6 +82,21 @@ const carouselItems = ref([
     label: "Item 3",
     description: "Item 3 description",
     imgLink: "https://images.pexels.com/photos/6289026/pexels-photo-6289026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+]);
+
+const comboboxOptions = ref([
+  {
+    label: "Option 1",
+    value: "1",
+  },
+  {
+    label: "Option 2",
+    value: "2",
+  },
+  {
+    label: "Option 3",
+    value: "3",
   },
 ]);
 
