@@ -52,6 +52,8 @@ const props = defineProps({
   options: Array,
 });
 
+const emit = defineEmits(['optionSelected']);
+
 const isOpen = ref(false);
 const selectedOption = ref(null);
 
@@ -62,6 +64,7 @@ const toggleDropdown = () => {
 const selectOption = (option) => {
   selectedOption.value = option;
   isOpen.value = false;
+  emit("optionSelected", option);
 };
 
 const selectedLabel = computed(() => {

@@ -44,7 +44,7 @@
 
       <story-carousel v-if="selectedOption === '12'" :items="carouselItems"></story-carousel>
 
-      <story-combobox v-if="selectedOption === '18'" :options="comboboxOptions"></story-combobox>
+      <story-combobox v-if="selectedOption === '18'" :options="comboboxOptions" @optionSelected="handleOptionSelected"></story-combobox>
     </div>
   </div>
 </template>
@@ -99,6 +99,12 @@ const comboboxOptions = ref([
     value: "3",
   },
 ]);
+
+const comboboxSelectedOption = ref(null);
+
+const handleOptionSelected = (option) => {
+  comboboxSelectedOption.value = option;
+};
 
 const setToLS = () => {
   localStorage.setItem("selectedOption", selectedOption.value);
