@@ -18,27 +18,13 @@
                   <thead>
                     <tr class="slds-line-height_reset">
                       <th class="" scope="col" style="width: 3.75rem"></th>
-                      <th v-for="(heading, index) in headings" :key="index" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <th v-for="heading in cellKeys" :key="heading" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
                         <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="-1">
                           <span class="slds-assistive-text">Sort by: </span>
                           <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
                             <span class="slds-truncate">{{ heading }}</span>
                           </div>
                         </a>
-                        <div class="slds-resizable">
-                          <input
-                            type="range"
-                            aria-label="Name column width"
-                            class="slds-resizable__input slds-assistive-text"
-                            id="cell-resize-handle-65"
-                            max="1000"
-                            min="20"
-                            tabindex="-1"
-                          />
-                          <span class="slds-resizable__handle">
-                            <span class="slds-resizable__divider"></span>
-                          </span>
-                        </div>
                       </th>
                     </tr>
                   </thead>
@@ -49,17 +35,8 @@
                           <input type="checkbox" class="slds-assistive-text" id="example-unique-id-172" value="example-unique-id-172" tabindex="-1" />
                         </label>
                       </td>
-                      <th scope="row">
-                        <div class="slds-truncate" title="Analytics">{{ item.label }}</div>
-                      </th>
-                      <td role="gridcell">
-                        <div class="slds-truncate" title="ANTLY">{{ item.productCode }}</div>
-                      </td>
-                      <td role="gridcell">
-                        <div class="slds-truncate" title="5000.00">{{ item.listPrice }}</div>
-                      </td>
-                      <td role="gridcell">
-                        <div class="slds-truncate" title="Analytics Product">{{ item.productFamily }}</div>
+                      <td v-for="(value, index) in item" :key="index" role="gridcell">
+                        <div class="slds-truncate" :title="value">{{ value }}</div>
                       </td>
                     </tr>
                   </tbody>
@@ -78,10 +55,12 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   items: Array,
   headings: Array,
 });
+
+const cellKeys = props.headings ? props.headings : Object.keys(props.items[0]);
 </script>
 
 <style scoped>
