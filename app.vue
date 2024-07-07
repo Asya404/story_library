@@ -16,6 +16,7 @@
         <option value="12">Carousel</option>
         <option value="13">Navigation</option>
         <option value="14">Data Table</option>
+        <option value="15">App Launcher</option>
       </select>
     </div>
     <div class="wrapper">
@@ -48,6 +49,8 @@
       <story-navigation v-if="selectedOption === '13'" :items="navigationItems">App Name</story-navigation>
 
       <story-data-table v-if="selectedOption === '14'" :items="tableItems" :headings="tableHeadings"></story-data-table>
+
+      <story-app-launcher v-if="selectedOption === '15'" :items="appLauncherItems">App launcher</story-app-launcher>
     </div>
   </div>
 </template>
@@ -162,6 +165,45 @@ const tableItems = ref([
     confidence: "40%",
     amount: "$30k",
     contact: "jrogers@cloudhub.com",
+  },
+]);
+
+const appLauncherItems = ref([
+  {
+    label: "Sales Cloud",
+    description: "The primary internal Salesforce org",
+    link: "https://www.google.com",
+    color: "#e3d067",
+  },
+  {
+    label: "Marketing Cloud",
+    description: "Salesforce Marketing Cloud lets businesses of any size",
+    onClick: () => (location.href = "/"),
+    color: "#6488e3",
+  },
+  {
+    label: "HR Concierge",
+    description: "Community for managing employee benefits",
+    link: "https://www.google.com",
+    color: "#e36868",
+  },
+  {
+    label: "My Money",
+    description: "Manage your finances across multiple financial platforms",
+    link: "https://www.google.com",
+    color: "#54c473",
+  },
+  {
+    label: "Call Center",
+    description: "The key to call center and contact center management",
+    link: "https://www.google.com",
+    color: "#bf7b66",
+  },
+  {
+    label: "Customer Support",
+    description: "Areas of Focus are used to track customer support",
+    link: "https://www.google.com",
+    color: "#49bcd3",
   },
 ]);
 
