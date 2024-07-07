@@ -17,6 +17,7 @@
         <option value="13">Navigation</option>
         <option value="14">Data Table</option>
         <option value="15">App Launcher</option>
+        <option value="16">Timeline</option>
       </select>
     </div>
     <div class="wrapper">
@@ -51,6 +52,12 @@
       <story-data-table v-if="selectedOption === '14'" :items="tableItems" :headings="tableHeadings"></story-data-table>
 
       <story-app-launcher v-if="selectedOption === '15'" :items="appLauncherItems">App launcher</story-app-launcher>
+
+      <story-timeline
+        v-if="selectedOption === '16'"
+        :items="timelineItems"
+        :style="{ backgroundColor: '#fff', padding: '20px', borderRadius: '5px' }"
+      ></story-timeline>
     </div>
   </div>
 </template>
@@ -204,6 +211,39 @@ const appLauncherItems = ref([
     description: "Areas of Focus are used to track customer support",
     link: "https://www.google.com",
     color: "#49bcd3",
+  },
+]);
+
+const timelineItems = ref([
+  {
+    type: "task",
+    title: "Mark Review proposals for EBC deck with larger team and have marketing review this",
+    time: "9:00am | 3/20/17",
+    description: "You created a task with Charlie Gomez",
+    link: "https://example.com",
+  },
+  {
+    type: "log_a_call",
+    title: "Mobile conversation on Monday",
+    time: "10:00am | 3/23/17",
+    description: "You logged a call with Adam Chan",
+    link: "https://example.com",
+  },
+  {
+    type: "email",
+    title: "Re: Mobile conversation on Monday with the new global team",
+    time: "10:00am | 3/24/17",
+    description: "You emailed Lea Chan",
+    additionalInfo: "Group email, Has attachments",
+    link: "https://example.com",
+  },
+  {
+    type: "event",
+    title: "EBC Follow up call",
+    time: "10:30am | 3/24/17",
+    description: "You created an event with Aida Lee and 5 others",
+    additionalInfo: "Public sharing",
+    link: "https://example.com",
   },
 ]);
 
