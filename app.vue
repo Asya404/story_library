@@ -18,6 +18,7 @@
         <option value="14">Data Table</option>
         <option value="15">App Launcher</option>
         <option value="16">Timeline</option>
+        <option value="17">List Builder</option>
       </select>
     </div>
     <div class="wrapper">
@@ -58,6 +59,10 @@
         :items="timelineItems"
         :style="{ backgroundColor: '#fff', padding: '20px', borderRadius: '5px' }"
       ></story-timeline>
+
+      <story-list-builder v-if="selectedOption === '17'" :items="listBuilderItems" :headings="listBuilderHeadings"
+        >Pricebook: Salesforce Products</story-list-builder
+      >
     </div>
   </div>
 </template>
@@ -244,6 +249,29 @@ const timelineItems = ref([
     description: "You created an event with Aida Lee and 5 others",
     additionalInfo: "Public sharing",
     link: "https://example.com",
+  },
+]);
+
+const listBuilderHeadings = ref(["Name", "Product Code", "List Price", "Product Family"]);
+
+const listBuilderItems = ref([
+  {
+    label: "Analytics",
+    productCode: "ANTLY",
+    listPrice: "5000.00",
+    productFamily: "Analytics Product",
+  },
+  {
+    label: "Analytics",
+    productCode: "ANTLY",
+    listPrice: "5000.00",
+    productFamily: "Analytics Product",
+  },
+  {
+    label: "Analytics",
+    productCode: "ANTLY",
+    listPrice: "5000.00",
+    productFamily: "Analytics Product",
   },
 ]);
 
