@@ -1,8 +1,8 @@
 <template>
   <div class="slds-card">
     <ul class="slds-accordion">
-      <li v-for="(item, index) in items" :key="item.label" class="slds-accordion__list-item" @click="toggleAccordion(item)">
-        <section :class="['slds-accordion__section', { 'slds-is-open': item.isOpen }]">
+      <li v-for="(item, index) in items" :key="item.label" class="slds-accordion__list-item" @click="toggleAccordion(index)">
+        <section :class="['slds-accordion__section', { 'slds-is-open': opened[index] }]">
           <div class="slds-accordion__summary">
             <h2 class="slds-accordion__summary-heading">
               <button
@@ -28,10 +28,10 @@ const props = defineProps({
   items: Array,
 });
 
-props.items = ref(props.items.map((item) => ({ ...item, isOpen: false })));
+const opened = ref(props.items.map(() => false));
 
-const toggleAccordion = (toggledItem) => {
-  toggledItem.isOpen = !toggledItem.isOpen;
+const toggleAccordion = (index) => {
+  opened.value = opened.value.map((state, i) => (i === index ? !state : false));
 };
 </script>
 
